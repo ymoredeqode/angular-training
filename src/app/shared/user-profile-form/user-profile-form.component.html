@@ -1,0 +1,59 @@
+<div class="homeWrapper">
+  <p>Reactive form</p>
+  <p>Form Status: {{ profileForm.valid }}</p>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="name" />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="email" />
+        <mat-hint *ngIf="profileForm?.controls?.email?.status === 'INVALID'"
+          >Invalid Email</mat-hint
+        >
+      </mat-form-field>
+    </p>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="homeWrapper">
+  <p>Template driven form</p>
+  <p>Form Status: {{ templateDrivenForm.valid }}</p>
+  <pre>Value : {{templateDrivenForm.value | json }} </pre>
+  <pre>Valid : {{templateDrivenForm.valid}} </pre>
+  <pre>Touched : {{templateDrivenForm.touched  }} </pre>
+  <pre>Submitted : {{templateDrivenForm.submitted  }} </pre>  
+  <form
+    (ngSubmit)="onTemplateFormSubmit(templateDrivenForm)"
+    #templateDrivenForm="ngForm"
+  >
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Name</mat-label>
+        <input name="name" ngModel matInput />
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Placeholder"
+          name="email"
+          ngModel        />
+      </mat-form-field>
+    </p>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>

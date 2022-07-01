@@ -10,9 +10,12 @@ import { MaterialExampleModule } from '../material.module';
 import { HomeComponent } from './component/home/home.component';
 import { AboutComponent } from './component/about/about.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { PaginatedTableComponent } from './shared/paginated-table/paginated-table.component';
+import { ReactiveFormsModule , FormsModule } from '@angular/forms';
+import { UserProfileFormComponent } from './shared/user-profile-form/user-profile-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, HeaderComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, HeaderComponent, PaginatedTableComponent, UserProfileFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +27,8 @@ import { HeaderComponent } from './shared/header/header.component';
       registrationStrategy: 'registerWhenStable:30000',
     }),
     MaterialExampleModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

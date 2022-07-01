@@ -1,12 +1,11 @@
 <app-header [toggleSideNav]="toggleSideNav"></app-header>
-{{showSideNav}}
 <mat-sidenav-container>
   <mat-sidenav [opened]="showSideNav" *ngIf="showSideNav">
     <mat-nav-list>
-      <a mat-list-item *ngFor="let route of routes" [routerLink]="route.url"> {{route.name}} </a>
-      <a mat-list-item (click)="toggleSideNav()" href="#" >
-        Close
+      <a mat-list-item *ngFor="let route of routes" [routerLink]="route.url">
+        {{ route.name }}
       </a>
+      <a mat-list-item (click)="toggleSideNav()" href="#"> Close </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
