@@ -13,9 +13,10 @@ import { HeaderComponent } from './shared/header/header.component';
 import { PaginatedTableComponent } from './shared/paginated-table/paginated-table.component';
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { UserProfileFormComponent } from './shared/user-profile-form/user-profile-form.component';
+import { UsersComponent } from './component/users/users.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, HeaderComponent, PaginatedTableComponent, UserProfileFormComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, HeaderComponent, PaginatedTableComponent, UserProfileFormComponent, UsersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -8,14 +8,9 @@ import { ROUTES } from './constants/routing.constants';
   styleUrls: ['./app.component.css'],
 })
 
-// interface RoutesInterface {
-//   name: string;
-//   url: string;
-// }
 export class AppComponent{
 
   showSideNav: BooleanInput = false;
-  // routes : RoutesInterface[] = ROUTES;
   routes = ROUTES;
 
   toggleSideNav = () => {
