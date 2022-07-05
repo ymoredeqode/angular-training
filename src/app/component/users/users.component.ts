@@ -27,6 +27,7 @@ export class UsersComponent implements OnInit {
       this.handleClear();
     }
   }
+  
   handleClear() {
     this.userForm.reset();
   }
