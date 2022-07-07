@@ -14,9 +14,10 @@ import { PaginatedTableComponent } from './shared/paginated-table/paginated-tabl
 import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { UserProfileFormComponent } from './shared/user-profile-form/user-profile-form.component';
 import { UsersComponent } from './component/users/users.component';
+import { BottomSheetComponentComponent } from './shared/bottom-sheet-component/bottom-sheet-component.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, HeaderComponent, PaginatedTableComponent, UserProfileFormComponent, UsersComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, HeaderComponent, PaginatedTableComponent, UserProfileFormComponent, UsersComponent, BottomSheetComponentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

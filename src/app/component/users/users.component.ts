@@ -1,13 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { BottomSheetComponentComponent } from 'src/app/shared/bottom-sheet-component/bottom-sheet-component.component';
 import { CommonService } from '../../services/common.service';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  constructor(private fb: FormBuilder, private cs: CommonService) {}
+  constructor(
+    private fb: FormBuilder,
+    private cs: CommonService,
+    private bottomSheet: MatBottomSheet,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -20,13 +29,19 @@ export class UsersComponent implements OnInit {
     status: [false],
   });
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
   getUsers() {
     if (this.cs.getData('users') != null) {
       this.userData = this.cs.getData('users');
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.userForm.valid) {
       this.cs.setData('users', [
         ...this.userData,
@@ -35,6 +50,7 @@ export class UsersComponent implements OnInit {
           id: Math.floor(Math.random() * 100000000),
         },
       ]);
+      this.openSnackBar('Added Successfully', 'Close');
       this.handleClear();
       this.getUsers();
     }
@@ -52,11 +68,24 @@ export class UsersComponent implements OnInit {
     });
     this.cs.setData('users', this.userData);
   }
+
   handleDelete(id: any) {
     this.userData = this.userData.filter((item) => item.id != id);
     this.cs.setData('users', this.userData);
+    this.openSnackBar('Deleted Successfully', 'Close');
+  }
+
+  openBottomSheet(id: any) {
+    let sheetRef = this.bottomSheet.open(BottomSheetComponentComponent, {
+      data: id,
+    });
+
+    sheetRef.afterDismissed().subscribe((data) => {
+      if (data && data.status === true) {
+        this.handleDelete(data.data);
+      }
+    });
   }
 }
 
 type Users = Array<{ id: number; name: string; city: string; status: boolean }>;
-type User = { id: number; name: string; city: string; status: boolean };

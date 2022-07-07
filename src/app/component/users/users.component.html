@@ -47,9 +47,14 @@
         </mat-slide-toggle>
       </td>
       <td>
-        <a [ngStyle]="{ cursor: 'pointer' }" (click)="handleDelete(user?.id)">
+        <!-- <a [ngStyle]="{ cursor: 'pointer' }" (click)="handleDelete(user?.id)">
           Delete
-        </a>
+        </a> -->
+
+        <a [ngStyle]="{ cursor: 'pointer' }" (click)="openBottomSheet(user?.id)">
+            Delete
+          </a>
+
       </td>
     </tr>
   </table>
