@@ -1,25 +1,36 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { MaterialExampleModule } from '../material.module';
-import { HomeComponent } from './component/home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { AboutComponent } from './component/about/about.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { PaginatedTableComponent } from './shared/paginated-table/paginated-table.component';
-import { ReactiveFormsModule , FormsModule } from '@angular/forms';
-import { UserProfileFormComponent } from './shared/user-profile-form/user-profile-form.component';
+import { HomeComponent } from './component/home/home.component';
+import { PostsComponent } from './component/posts/posts.component';
 import { UsersComponent } from './component/users/users.component';
 import { BottomSheetComponentComponent } from './shared/bottom-sheet-component/bottom-sheet-component.component';
-
+import { HeaderComponent } from './shared/header/header.component';
+import { PaginatedTableComponent } from './shared/paginated-table/paginated-table.component';
+import { UserProfileFormComponent } from './shared/user-profile-form/user-profile-form.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, HeaderComponent, PaginatedTableComponent, UserProfileFormComponent, UsersComponent, BottomSheetComponentComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    HeaderComponent,
+    PaginatedTableComponent,
+    UserProfileFormComponent,
+    UsersComponent,
+    BottomSheetComponentComponent,
+    PostsComponent,
+  ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -30,7 +41,7 @@ import { BottomSheetComponentComponent } from './shared/bottom-sheet-component/b
     }),
     MaterialExampleModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

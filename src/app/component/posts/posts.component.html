@@ -1,0 +1,56 @@
+<div class="homeWrapper">
+    <div class="homeWrapper">
+      <form [formGroup]="postsForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="title" />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Body</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="body" />
+          </mat-form-field>
+        </p>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  
+    <table *ngIf="posts.length">
+      <tr>
+        <th>UserId</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Body</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let post of posts">
+        <td [ngClass]="{ green: true}">
+          {{ post?.userId }}
+        </td>
+        <td [ngClass]="{ green: true}">
+            {{ post?.id }}
+          </td>
+          <td [ngClass]="{ green: true}">
+            {{ post?.title }}
+          </td>
+          <td [ngClass]="{ green: true}">
+            {{ post?.body }}
+          </td>
+        <td>
+          <!-- <a [ngStyle]="{ cursor: 'pointer' }" (click)="handleDelete(user?.id)">
+            Delete
+          </a> -->
+  
+          <a [ngStyle]="{ cursor: 'pointer' }" (click)="openBottomSheet(user?.id)">
+              Delete
+            </a>
+  
+        </td>
+      </tr>
+    </table>
+  </div>
+  
